@@ -12,7 +12,7 @@ public class Arreglo<E> {
 	}
 	
 	public void insertar(E elemento) throws IndicieFueraExeption {
-		if(indice<arreglo.length) {
+		if(indice >=0 && indice < arreglo.length) {
 			arreglo[indice]=elemento;	
 			ultimaPosicion=indice;
 			indice++;
@@ -36,7 +36,7 @@ public class Arreglo<E> {
 	
 	public boolean insertar(E elemento,int indice) throws IndicieFueraExeption
 	{
-		if(indice >= 0 && indice < arreglo.length)
+		if(indice >=0 && indice < arreglo.length)
 		{
 			arreglo[indice]=elemento;
 			ultimaPosicion=indice;
@@ -47,9 +47,9 @@ public class Arreglo<E> {
 		}
 	}
 	
-	public E recuperar()
+	public E recuperar(int indice)
 	{
-		return (E) arreglo[ultimaPosicion];
+		return (E) arreglo[indice];
 	}
 	
 	public void limpiar()
@@ -60,6 +60,62 @@ public class Arreglo<E> {
 	    indice = 0;
 	    ultimaPosicion = -1;
 	}
+	public int localizar(E elemento)
+	{
+		for(int i = 0; i< arreglo.length;i++)
+		{
+			if (arreglo[i]== elemento)
+			{
+				return i;
+			}
+			
+		}
+		return -1;
+		
+	}
+	public boolean suprime(int indice)
+	{
+		if(indice >=0 && indice < arreglo.length)
+		{
+			arreglo[indice]=null;
+			return true;
+		}
+		return false;
+		
+	}
+	public E siguiente(int indice) {
+		indice++;
+		if(indice >=0 && indice < arreglo.length)
+		{
+			return (E) arreglo[indice];
+		}
+		return null;
+	}
+	
+	public E anterior(int indice) {
+		indice--;
+		if(indice >=0 && indice < arreglo.length)
+		{
+			return (E) arreglo[indice];
+		}
+		return null;
+	}
+	
+	public E primero()
+	{
+		return (E) arreglo[0];
+	}
+	
+	public boolean asignar(E elemento, int indice)
+	{
+		if(indice >=0 && indice < arreglo.length)
+		{
+			arreglo[indice]=elemento;
+			return true;
+		}
+		return false;
+	}
+	
 	
 
 }
