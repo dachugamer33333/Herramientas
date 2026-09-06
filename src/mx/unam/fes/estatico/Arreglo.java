@@ -3,119 +3,115 @@ package mx.unam.fes.estatico;
 import mx.unam.fes.exepciones.IndicieFueraExeption;
 
 public class Arreglo<E> {
-	private int indice;
 	private final Object[] arreglo;
-	private int ultimaPosicion;
+	private int numElementos;
+
 	public Arreglo(int longitud) {
-		arreglo=new Object[longitud];
-		ultimaPosicion=-1;
+		arreglo = new Object[longitud];
+		numElementos = 0;
 	}
-	
-	public void insertar(E elemento) throws IndicieFueraExeption {
-		if(indice >=0 && indice < arreglo.length) {
-			arreglo[indice]=elemento;	
-			ultimaPosicion=indice;
-			indice++;
-			
-		}else {
-			 throw new IndicieFueraExeption("Indice fuera del arreglo");
-		}
-	}
+
 	public boolean vacio() {
-		if (indice < arreglo.length) {
-			return false; 
-		}
-		return true; 
+		return numElementos == 0;
 	}
+
+	public boolean lleno() {
+		return numElementos == arreglo.length;
+	}
+
+	public int numElementos() {
+		return numElementos;
+	}
+
+	public void insertar(E elemento) throws IndicieFueraExeption {
+		insertar(elemento, numElementos);
+	}
+
+	public void insertar(E elemento, int posicion) throws IndicieFueraExeption {
+		if (lleno()) {
+			throw new IndicieFueraExeption("El arreglo esta lleno, no se puede insertar");
+		}
+		if (posicion < 0 || posicion > numElementos) {
+			throw new IndicieFueraExeption("Posicion fuera del arreglo");
+		}
+		for (int i = numElementos; i > posicion; i--) {
+			arreglo[i] = arreglo[i - 1];
+		}
+		arreglo[posicion] = elemento;
+		numElementos++;
+	}
+
+	public void asignar(E elemento, int posicion) throws IndicieFueraExeption {
+		validarPosicionOcupada(posicion);
+		arreglo[posicion] = elemento;
+	}
+
+	public void suprimir(int posicion) throws IndicieFueraExeption {
+		validarPosicionOcupada(posicion);
+		for (int i = posicion; i < numElementos - 1; i++) {
+			arreglo[i] = arreglo[i + 1];
+		}
+		arreglo[numElementos - 1] = null;
+		numElementos--;
+	}
+
+	public E recuperar(int posicion) throws IndicieFueraExeption {
+		validarPosicionOcupada(posicion);
+		return (E) arreglo[posicion];
+	}
+
+	public int localizar(E elemento) {
+		for (int i = 0; i < numElementos; i++) {
+			if (elemento == null ? arreglo[i] == null : elemento.equals(arreglo[i])) {
+				return i;
+			}
+		}
+		return -1;
+	}
+
+	public E siguiente(int posicion) throws IndicieFueraExeption {
+		validarPosicionOcupada(posicion);
+		if (posicion + 1 >= numElementos) {
+			throw new IndicieFueraExeption("No hay elemento siguiente");
+		}
+		return (E) arreglo[posicion + 1];
+	}
+
+	public E anterior(int posicion) throws IndicieFueraExeption {
+		validarPosicionOcupada(posicion);
+		if (posicion - 1 < 0) {
+			throw new IndicieFueraExeption("No hay elemento anterior");
+		}
+		return (E) arreglo[posicion - 1];
+	}
+
+	public E primero() throws IndicieFueraExeption {
+		if (vacio()) {
+			throw new IndicieFueraExeption("El arreglo esta vacio");
+		}
+		return (E) arreglo[0];
+	}
+
+	public void limpiar() {
+		for (int i = 0; i < arreglo.length; i++) {
+			arreglo[i] = null;
+		}
+		numElementos = 0;
+	}
+
 	public void imprimir() {
-		for(int i=0;i<arreglo.length;i++) {
-			System.out.print(arreglo[i]+",");
+		for (int i = 0; i < numElementos; i++) {
+			System.out.print(arreglo[i]);
+			if (i < numElementos - 1) {
+				System.out.print(",");
+			}
 		}
 		System.out.println();
 	}
-	
-	public boolean insertar(E elemento,int indice) throws IndicieFueraExeption
-	{
-		if(indice >=0 && indice < arreglo.length)
-		{
-			arreglo[indice]=elemento;
-			ultimaPosicion=indice;
-			return true;
-		}
-		else {
-			throw new IndicieFueraExeption("Indice fuera del rango");
-		}
-	}
-	
-	public E recuperar(int indice)
-	{
-		return (E) arreglo[indice];
-	}
-	
-	public void limpiar()
-	{
-		for (int i = 0; i < arreglo.length; i++) {
-	        arreglo[i] = null; 
-	    }
-	    indice = 0;
-	    ultimaPosicion = -1;
-	}
-	public int localizar(E elemento)
-	{
-		for(int i = 0; i< arreglo.length;i++)
-		{
-			if (arreglo[i]== elemento)
-			{
-				return i;
-			}
-			
-		}
-		return -1;
-		
-	}
-	public boolean suprime(int indice)
-	{
-		if(indice >=0 && indice < arreglo.length)
-		{
-			arreglo[indice]=null;
-			return true;
-		}
-		return false;
-		
-	}
-	public E siguiente(int indice) {
-		indice++;
-		if(indice >=0 && indice < arreglo.length)
-		{
-			return (E) arreglo[indice];
-		}
-		return null;
-	}
-	
-	public E anterior(int indice) {
-		indice--;
-		if(indice >=0 && indice < arreglo.length)
-		{
-			return (E) arreglo[indice];
-		}
-		return null;
-	}
-	
-	public E primero()
-	{
-		return (E) arreglo[0];
-	}
-	
-	public boolean asignar(E elemento, int indice)
-	{
-		if(indice >=0 && indice < arreglo.length)
-		{
-			arreglo[indice]=elemento;
-			return true;
-		}
-		return false;
-	}
-	
-	
 
+	private void validarPosicionOcupada(int posicion) throws IndicieFueraExeption {
+		if (posicion < 0 || posicion >= numElementos) {
+			throw new IndicieFueraExeption("Posicion fuera del arreglo");
+		}
+	}
 }
