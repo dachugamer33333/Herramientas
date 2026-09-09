@@ -1,52 +1,78 @@
 package mx.unam.fes.inicio;
 
+import java.util.Random;
+
 import mx.unam.fes.estatico.Arreglo;
+import mx.unam.fes.estatico.Elemento;
 import mx.unam.fes.exepciones.IndicieFueraExeption;
 
 public class Principal_Uno {
-	public static void main(String[] args) {
-		Arreglo<Integer> numeros = new Arreglo<Integer>(5);
-		Arreglo<String> palabras = new Arreglo<String>(5);
-		try {
-			numeros.insertar(10);
-			numeros.insertar(20);
-			numeros.insertar(30);
-			numeros.insertar(40);
-			
-			System.out.print("Imprime: ");
-			numeros.imprimir();
-
-			System.out.println("vacio? " + numeros.vacio() + "  lleno? " + numeros.lleno());
-
-			numeros.insertar(99, 1);
-			System.out.print("Insertar(99, 1): ");
-			numeros.imprimir();
-
-			System.out.println("Localiza(40): " + numeros.localizar(40));
-			System.out.println("Localiza(777): " + numeros.localizar(777));
-
-			System.out.println("Recupera(3): " + numeros.recuperar(3));
-			System.out.println("Siguiente(3): " + numeros.siguiente(3));
-			System.out.println("Anterior(3): " + numeros.anterior(3));
-			System.out.println("Primero: " + numeros.primero());
-
-			numeros.suprimir(1);
-			System.out.print("Suprime(1): ");
-			numeros.imprimir();
-
-			numeros.asignar(100, 0);
-			System.out.print("Asignar(100, 0): ");
-			numeros.imprimir();
-
-			palabras.insertar("hola");
-			palabras.insertar("mundo");
-			System.out.println("Localiza('mundo') en palabras: " + palabras.localizar("mundo"));
-
-			numeros.limpiar();
-			System.out.println("vacio despues de limpiar? " + numeros.vacio());
-		} catch (IndicieFueraExeption e) {
-			e.printStackTrace();
+	public static void main(String[] args) throws IndicieFueraExeption {
+		int longitud = 1000;
+		Arreglo<Integer> numeros = new Arreglo<Integer>(longitud);
+		Random ran = new Random();
+		int c;
+		double promedio=0;
+		// Llenado de la estructura
+		while(!numeros.lleno()) {
+			c=ran.nextInt(101);
+			promedio+=c;
+			numeros.insertar(c);
 		}
+		promedio=promedio/numeros.numElementos();
+		numeros.imprimir();
+		
+		// Inicialización
+		int numMayor = numeros.primero();
+		int numeroSegundoMayor = -1; // Seguro, ya que tus números generados van de 0 a 100
+		int cout = 0;
+		
+		// Un solo recorrido para buscar ambos valores
+		while(cout <= numeros.numElementos() - 2) {
+			int actual = numeros.siguiente(cout);
+			
+			if (actual > numMayor) {
+				numeroSegundoMayor = numMayor; // El viejo mayor pasa a ser el segundo
+				numMayor = actual; // Actualizamos el nuevo mayor
+			} 
+			else if (actual > numeroSegundoMayor && actual < numMayor) {
+				numeroSegundoMayor = actual; // Actualizamos solo el segundo
+			}
+			
+			cout++;
+		}
+		
+		//contar elementos individuales
+		// Arreglo vacío inicialmente
+		Arreglo<Elemento> contadorNumeros = new Arreglo(numeros.numElementos());
+
+		// Cambiamos a for para mejor legibilidad, cuidando que i sea < numElementos
+		for (int i = 0; i < numeros.numElementos(); i++) {
+		    Integer valorActual = numeros.recuperar(i);
+		    boolean encontrado = false;
+		    
+		    // Recorremos el contador para ver si el valor ya existe
+		    for (int j = 0; j < contadorNumeros.numElementos(); j++) {
+		        if (valorActual == contadorNumeros.recuperar(j).getValor()) {
+		            contadorNumeros.recuperar(j).aumentarCantidad();
+		            encontrado = true;
+		            break; // Rompemos el ciclo j porque ya lo encontramos
+		        }
+		    }
+		    
+		    // Solo si termino el ciclo j y NUNCA se encontro, lo insertamos como nuevo
+		    if (!encontrado) {
+		        contadorNumeros.insertar(new Elemento(valorActual));
+		    }
+		}
+
+		System.out.println("Mayor: " + numMayor + " | Segundo: " + numeroSegundoMayor);
+		System.out.println("Promedio:" + promedio);
+		contadorNumeros.imprimir();
+		
+		System.out.println("Mayor: " + numMayor + " | Segundo: " + numeroSegundoMayor);
+		System.out.println("Promedio:" + promedio);
+		contadorNumeros.imprimir();
 	}
 
 }
