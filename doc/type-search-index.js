@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"mx.unam.fes.estatico","l":"Arreglo"},{"p":"mx.unam.fes.estatico","l":"Elemento"},{"p":"mx.unam.fes.exepciones","l":"IndicieFueraExeption"},{"p":"mx.unam.fes.inicio","l":"Principal_Uno"}];updateSearchResults();
