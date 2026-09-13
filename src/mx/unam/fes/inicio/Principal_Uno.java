@@ -8,71 +8,7 @@ import mx.unam.fes.exepciones.IndicieFueraExeption;
 
 public class Principal_Uno {
 	public static void main(String[] args) throws IndicieFueraExeption {
-		int longitud = 1000;
-		Arreglo<Integer> numeros = new Arreglo<Integer>(longitud);
-		Random ran = new Random();
-		int c;
-		double promedio=0;
-		// Llenado de la estructura
-		while(!numeros.lleno()) {
-			c=ran.nextInt(101);
-			promedio+=c;
-			numeros.insertar(c);
-		}
-		promedio=promedio/numeros.numElementos();
-		numeros.imprimir();
 		
-		// Inicialización
-		int numMayor = numeros.primero();
-		int numeroSegundoMayor = -1; // Seguro, ya que tus números generados van de 0 a 100
-		int cout = 0;
-		
-		// Un solo recorrido para buscar ambos valores
-		while(cout <= numeros.numElementos() - 2) {
-			int actual = numeros.siguiente(cout);
-			
-			if (actual > numMayor) {
-				numeroSegundoMayor = numMayor; // El viejo mayor pasa a ser el segundo
-				numMayor = actual; // Actualizamos el nuevo mayor
-			} 
-			else if (actual > numeroSegundoMayor && actual < numMayor) {
-				numeroSegundoMayor = actual; // Actualizamos solo el segundo
-			}
-			
-			cout++;
-		}
-		
-		//contar elementos individuales
-		// Arreglo vacío inicialmente
-		Arreglo<Elemento> contadorNumeros = new Arreglo(numeros.numElementos());
-
-		// Cambiamos a for para mejor legibilidad, cuidando que i sea < numElementos
-		for (int i = 0; i < numeros.numElementos(); i++) {
-		    Integer valorActual = numeros.recuperar(i);
-		    boolean encontrado = false;
-		    
-		    // Recorremos el contador para ver si el valor ya existe
-		    for (int j = 0; j < contadorNumeros.numElementos(); j++) {
-		        if (valorActual == contadorNumeros.recuperar(j).getValor()) {
-		            contadorNumeros.recuperar(j).aumentarCantidad();
-		            encontrado = true;
-		            break; // Rompemos el ciclo j porque ya lo encontramos
-		        }
-		    }
-		    
-		    // Solo si termino el ciclo j y NUNCA se encontro, lo insertamos como nuevo
-		    if (!encontrado) {
-		        contadorNumeros.insertar(new Elemento(valorActual));
-		    }
-		}
-
-		System.out.println("Mayor: " + numMayor + " | Segundo: " + numeroSegundoMayor);
-		System.out.println("Promedio:" + promedio);
-		contadorNumeros.imprimir();
-		
-		System.out.println("Mayor: " + numMayor + " | Segundo: " + numeroSegundoMayor);
-		System.out.println("Promedio:" + promedio);
-		contadorNumeros.imprimir();
 	}
 
 }
