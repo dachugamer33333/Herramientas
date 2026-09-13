@@ -1,4 +1,4 @@
-package dinamico;
+package mx.unam.fes.dinamico;
 
 public class Nodo<T> {
 	private T dato;
