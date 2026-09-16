@@ -12,6 +12,13 @@ public class ListaDoblementeEnlazada<T> {
 	public boolean esVacia() {
 		return cabeza == null;
 	}
+	public void imprimirTodo()
+	{
+		for(int i=0;i<longitud; i++)
+		{
+			System.out.println(obtenerNodo(i));
+		}
+	}
 
 	public void agregarCabeza(T dato) {
 		  NodoD<T> nuevo = new NodoD<T>(dato, cabeza);
