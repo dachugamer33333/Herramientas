@@ -20,6 +20,7 @@ public class ListaEnlazada<T> {
 		}
 		longitud++;
 	}
+	
 
 	public void agregarCola(T dato) {
 		if (!esVacia()) {
@@ -151,5 +152,18 @@ return longitud;
 				}
 			}
 		}
+		
 	}
+
+	public T getCola() {
+		return cola.getDato();
+	}
+
+	public T getCabeza() {
+		return cabeza.getDato();
+	}
+
+	
+
+	
 }
