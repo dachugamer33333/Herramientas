@@ -1,4 +1,4 @@
-package mx.unam.fes.dinamico;
+package mx.unam.fes.dinamico.ListaSimple;
 
 public class ListaEnlazada<T> {
 	private Nodo<T> cola;

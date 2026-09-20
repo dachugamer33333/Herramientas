@@ -1,15 +1,15 @@
-package mx.unam.fes.dinamico;
+package mx.unam.fes.dinamico.ListaDoble;
 
-public class NodoD<T> {
+public class Nodo<T> {
 	private T dato;
-	private NodoD<T> siguiente;
-	private NodoD<T> anterior;
+	private Nodo<T> siguiente;
+	private Nodo<T> anterior;
 	
-	public NodoD(T dato) {
+	public Nodo(T dato) {
 		this(dato, null);
 	}
 
-	public NodoD(T dato, NodoD<T> siguiente) {
+	public Nodo(T dato, Nodo<T> siguiente) {
 		this.dato = dato;
 		this.siguiente = siguiente;
 	}
@@ -22,21 +22,21 @@ public class NodoD<T> {
 		this.dato = dato;
 	}
 
-	public NodoD<T> getSiguiente() {
+	public Nodo<T> getSiguiente() {
 		return siguiente;
 	}
 	
 	
 
-	public NodoD<T> getanterior() {
+	public Nodo<T> getanterior() {
 		return anterior;
 	}
 
-	public void setanterior(NodoD<T> anterior) {
+	public void setanterior(Nodo<T> anterior) {
 		this.anterior = anterior;
 	}
 
-	public void setSiguiente(NodoD<T> siguiente) {
+	public void setSiguiente(Nodo<T> siguiente) {
 		this.siguiente = siguiente;
 	}
 }

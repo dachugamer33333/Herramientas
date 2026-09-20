@@ -1,8 +1,8 @@
-package mx.unam.fes.dinamico;
+package mx.unam.fes.dinamico.ListaDoble;
 
 public class ListaDoblementeEnlazada<T> {
-	private NodoD<T> cola;
-	private NodoD<T> cabeza;
+	private Nodo<T> cola;
+	private Nodo<T> cabeza;
 	private int longitud = 0;
 
 	public ListaDoblementeEnlazada() {
@@ -21,7 +21,7 @@ public class ListaDoblementeEnlazada<T> {
 	}
 
 	public void agregarCabeza(T dato) {
-		  NodoD<T> nuevo = new NodoD<T>(dato, cabeza);
+		  Nodo<T> nuevo = new Nodo<T>(dato, cabeza);
 		    if (cabeza != null) {
 		        cabeza.setanterior(nuevo);
 		    } else {
@@ -32,7 +32,7 @@ public class ListaDoblementeEnlazada<T> {
 	}
 
 	public void agregarCola(T dato) {
-		  NodoD<T> nuevo = new NodoD<T>(dato);
+		  Nodo<T> nuevo = new Nodo<T>(dato);
 		    if (!esVacia()) {
 		        nuevo.setanterior(cola);
 		        cola.setSiguiente(nuevo);
@@ -80,7 +80,7 @@ return longitud;
 	}
 
 	public T obtenerNodo(int indice) {
-		NodoD<T> temp = cabeza;
+		Nodo<T> temp = cabeza;
 		for (int contador = 0; contador < indice && temp != null; contador++, temp = temp.getSiguiente())
 			;
 		if (temp != null) {
@@ -102,12 +102,12 @@ return longitud;
 		        agregarCola(dato);
 		        return true;
 		    }
-		    NodoD<T> tmp = cabeza;
+		    Nodo<T> tmp = cabeza;
 		    for (int contador = 0; contador < indice; contador++) {
 		        tmp = tmp.getSiguiente();
 		    }
-		    NodoD<T> anterior = tmp.getanterior();
-		    NodoD<T> nuevo = new NodoD<T>(dato, tmp);
+		    Nodo<T> anterior = tmp.getanterior();
+		    Nodo<T> nuevo = new Nodo<T>(dato, tmp);
 		    nuevo.setanterior(anterior);
 		    anterior.setSiguiente(nuevo);
 		    tmp.setanterior(nuevo);
@@ -116,7 +116,7 @@ return longitud;
 	}
 
 	public void imprimir() {
-		for (NodoD<T> temp = cabeza; temp != null; temp = temp.getSiguiente()) {
+		for (Nodo<T> temp = cabeza; temp != null; temp = temp.getSiguiente()) {
 			System.out.println(temp.getDato() + " ");
 		}
 	}
@@ -132,7 +132,7 @@ return longitud;
 				 cabeza.setanterior(null);
 				longitud--;
 			} else {
-				NodoD<T> tmp;
+				Nodo<T> tmp;
 				for (  tmp = cabeza.getSiguiente(); tmp != null
 						&& !tmp.getDato().equals(dato);  tmp = tmp.getSiguiente())
 					;
@@ -164,7 +164,7 @@ return longitud;
 		        longitud--;
 		        return;
 		    }
-		    NodoD<T> tmp = cabeza;
+		    Nodo<T> tmp = cabeza;
 		    for (int contador = 0; contador < indice; contador++) {
 		        tmp = tmp.getSiguiente();
 		    }
