@@ -15,6 +15,15 @@ public class Pila<T> {
 		this.pila= new ListaEnlazada<T>();
 		this.capacidad=capacidad;
 	}
+	public int getLongitud() {
+		return pila.getLongitud();
+	}
+	
+	public boolean esVacia()
+	{
+		return pila.esVacia();
+	}
+	
 	
 	public boolean agregar(T valor)
 	{

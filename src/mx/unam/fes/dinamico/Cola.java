@@ -17,6 +17,13 @@ public class Cola<T> {
 		this.cola= new ListaEnlazada<T>();
 		this.capacidad=capacidad;
 	}
+	public int getLongitud() {
+		return cola.getLongitud();
+	}
+	public boolean esVacia()
+	{
+		return cola.esVacia();
+	}
 	
 	public boolean agregar(T valor)
 	{
