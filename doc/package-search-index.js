@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"mx.unam.fes.estatico"},{"l":"mx.unam.fes.exepciones"},{"l":"mx.unam.fes.inicio"}];updateSearchResults();
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"mx.unam.fes.dinamico"},{"l":"mx.unam.fes.dinamico.ListaDoble"},{"l":"mx.unam.fes.dinamico.ListaSimple"},{"l":"mx.unam.fes.estatico"},{"l":"mx.unam.fes.exepciones"}];updateSearchResults();
