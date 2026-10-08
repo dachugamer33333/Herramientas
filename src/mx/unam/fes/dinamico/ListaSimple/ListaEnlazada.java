@@ -212,7 +212,12 @@ public class ListaEnlazada<T> {
 	 * @return El dato contenido en la cola.
 	 */
 	public T getCola() {
-		return cola.getDato();
+		if(!esVacia())
+		{
+			return cola.getDato();
+		}
+		return null;
+		
 	}
 
 	/**
@@ -221,7 +226,11 @@ public class ListaEnlazada<T> {
 	 * @return El dato contenido en la cabeza.
 	 */
 	public T getCabeza() {
-		return cabeza.getDato();
+		if(!esVacia())
+		{
+			return cabeza.getDato();
+		}
+		return null;
 	}
 	
 	
