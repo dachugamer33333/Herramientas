@@ -88,4 +88,15 @@ public class Pila<T> {
 		pila.eliminarDeCabeza();
 		return valorCabeza;
 	}
+	
+	public void imprimir()
+	{
+		pila.imprimir();
+	}
+
+	@Override
+	public String toString() {
+		return "Pila [pila=" + pila + ", capacidad=" + capacidad + "]";
+	}
+	
 }

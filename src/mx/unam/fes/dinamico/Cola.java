@@ -89,4 +89,15 @@ public class Cola<T> {
 		cola.eliminarDeCabeza();
 		return valorCola;
 	}
+	
+	public void imprimir()
+	{
+		cola.imprimir();
+	}
+
+	@Override
+	public String toString() {
+		return "Cola [cola=" + cola + ", capacidad=" + capacidad + "]";
+	}
+	
 }

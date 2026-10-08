@@ -223,4 +223,11 @@ public class ListaEnlazada<T> {
 	public T getCabeza() {
 		return cabeza.getDato();
 	}
+	
+	
+	@Override
+	public String toString() {
+		return "ListaEnlazada [cola=" + cola + ", cabeza=" + cabeza + ", longitud=" + longitud + "]";
+	}
+	
 }
