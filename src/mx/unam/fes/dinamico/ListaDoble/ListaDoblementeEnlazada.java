@@ -233,4 +233,30 @@ public class ListaDoblementeEnlazada<T> {
 		}
 		longitud--;
 	}
+	/**
+	 * Obtengo el valor almacenado en el nodo final de la lista.
+	 * 
+	 * @return El dato contenido en la cola.
+	 */
+	public T getCola() {
+		if(!esVacia())
+		{
+			return cola.getDato();
+		}
+		return null;
+		
+	}
+
+	/**
+	 * Obtengo el valor almacenado en el primer nodo de la lista.
+	 * 
+	 * @return El dato contenido en la cabeza.
+	 */
+	public T getCabeza() {
+		if(!esVacia())
+		{
+			return cabeza.getDato();
+		}
+		return null;
+	}
 }
