@@ -205,6 +205,26 @@ public class ListaEnlazada<T> {
 			}
 		}
 	}
+	/**
+	 * Reemplaza el dato contenido en el nodo de la posicion especificada.
+	 *
+	 * @param nuevoDato El nuevo valor que se asignara al nodo.
+	 * @param indice La posicion del nodo cuyo valor se desea modificar.
+	 * @return true si la operacion fue exitosa, false si el indice esta fuera de rango.
+	 */
+	public boolean reemplazarEnIndice(T nuevoDato, int indice) {
+		if (indice < 0 || indice >= longitud) {
+			return false;
+		}
+
+		Nodo<T> tmp = cabeza;
+		for (int contador = 0; contador < indice; contador++) {
+			tmp = tmp.getSiguiente();
+		}
+
+		tmp.setDato(nuevoDato);
+		return true;
+	}
 
 	/**
 	 * Obtengo el valor almacenado en el nodo final de la lista.

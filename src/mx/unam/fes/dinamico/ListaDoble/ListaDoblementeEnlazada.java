@@ -234,6 +234,35 @@ public class ListaDoblementeEnlazada<T> {
 		longitud--;
 	}
 	/**
+	 * Reemplaza el dato contenido en el nodo de la posicion especificada.
+	 *
+	 * @param nuevoDato El nuevo valor que se asignara al nodo.
+	 * @param indice La posicion del nodo cuyo valor se desea modificar.
+	 * @return true si la operacion fue exitosa, false si el indice esta fuera de rango.
+	 */
+	public boolean reemplazarEnIndice(T nuevoDato, int indice) {
+		if (indice < 0 || indice >= longitud) {
+			return false;
+		}
+
+		Nodo<T> tmp;
+		// Optimizacion: si el indice esta en la segunda mitad, recorremos hacia atras desde la cola
+		if (indice < longitud / 2) {
+			tmp = cabeza;
+			for (int contador = 0; contador < indice; contador++) {
+				tmp = tmp.getSiguiente();
+			}
+		} else {
+			tmp = cola;
+			for (int contador = longitud - 1; contador > indice; contador--) {
+				tmp = tmp.getanterior();
+			}
+		}
+
+		tmp.setDato(nuevoDato);
+		return true;
+	}
+	/**
 	 * Obtengo el valor almacenado en el nodo final de la lista.
 	 * 
 	 * @return El dato contenido en la cola.
