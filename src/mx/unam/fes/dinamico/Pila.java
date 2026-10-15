@@ -72,7 +72,7 @@ public class Pila<T> {
 		if (pila.esVacia()) {
 			return null;
 		}
-		return pila.getCabeza();
+		return pila.getDatoCabeza();
 	}
 
 	/**
@@ -84,7 +84,7 @@ public class Pila<T> {
 		if (pila.esVacia()) {
 			return null;
 		}
-		T valorCabeza = pila.getCabeza();
+		T valorCabeza = pila.getDatoCabeza();
 		pila.eliminarDeCabeza();
 		return valorCabeza;
 	}

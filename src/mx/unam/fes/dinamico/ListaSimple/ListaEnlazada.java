@@ -234,7 +234,7 @@ public class ListaEnlazada<T> {
 	 * 
 	 * @return El dato contenido en la cola.
 	 */
-	public T getCola() {
+	public T getDatoCola() {
 		if(!esVacia())
 		{
 			return cola.getDato();
@@ -248,7 +248,7 @@ public class ListaEnlazada<T> {
 	 * 
 	 * @return El dato contenido en la cabeza.
 	 */
-	public T getCabeza() {
+	public T getDatoCabeza() {
 		if(!esVacia())
 		{
 			return cabeza.getDato();
@@ -257,6 +257,19 @@ public class ListaEnlazada<T> {
 	}
 	
 	
+	
+	
+	public Nodo<T> getCola() {
+		return cola;
+	}
+
+	
+	public Nodo<T> getCabeza() {
+		return cabeza;
+	}
+
+	
+
 	@Override
 	public String toString() {
 		return "ListaEnlazada [cola=" + cola + ", cabeza=" + cabeza + ", longitud=" + longitud + "]";

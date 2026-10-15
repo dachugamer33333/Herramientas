@@ -73,7 +73,7 @@ public class Cola<T> {
 		if (cola.esVacia()) {
 			return null;
 		}
-		return cola.getCabeza();
+		return cola.getDatoCabeza();
 	}
 
 	/**
@@ -85,7 +85,7 @@ public class Cola<T> {
 		if (cola.esVacia()) {
 			return null;
 		}
-		T valorCola = cola.getCabeza();
+		T valorCola = cola.getDatoCabeza();
 		cola.eliminarDeCabeza();
 		return valorCola;
 	}
