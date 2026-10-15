@@ -168,6 +168,7 @@ public class ListaDoblementeEnlazada<T> {
 		for (Nodo<T> temp = cabeza; temp != null; temp = temp.getSiguiente()) {
 			System.out.print(temp.getDato() + " ");
 		}
+		System.out.println(" ");
 	}
 
 	/**

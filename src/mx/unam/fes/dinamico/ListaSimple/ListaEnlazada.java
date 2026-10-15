@@ -143,7 +143,10 @@ public class ListaEnlazada<T> {
 	public void imprimir() {
 		for (Nodo<T> temp = cabeza; temp != null; temp = temp.getSiguiente()) {
 			System.out.print(temp.getDato() + " ");
+			
 		}
+		System.out.println(" ");
+
 	}
 
 	/**
