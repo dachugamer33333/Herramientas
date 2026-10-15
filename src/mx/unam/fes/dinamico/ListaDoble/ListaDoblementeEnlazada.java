@@ -268,7 +268,7 @@ public class ListaDoblementeEnlazada<T> {
 	 * 
 	 * @return El dato contenido en la cola.
 	 */
-	public T getCola() {
+	public T getDatoCola() {
 		if(!esVacia())
 		{
 			return cola.getDato();
@@ -282,11 +282,20 @@ public class ListaDoblementeEnlazada<T> {
 	 * 
 	 * @return El dato contenido en la cabeza.
 	 */
-	public T getCabeza() {
+	public T getDatoCabeza() {
 		if(!esVacia())
 		{
 			return cabeza.getDato();
 		}
 		return null;
 	}
+
+	public Nodo<T> getCola() {
+		return cola;
+	}
+
+	public Nodo<T> getCabeza() {
+		return cabeza;
+	}
+	
 }
