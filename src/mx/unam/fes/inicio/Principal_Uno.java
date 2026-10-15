@@ -5,7 +5,6 @@ import mx.unam.fes.dinamico.Pila;
 import mx.unam.fes.dinamico.ListaSimple.ListaEnlazada;
 import mx.unam.fes.dinamico.ListaDoble.ListaDoblementeEnlazada;
 import mx.unam.fes.estatico.Arreglo;
-import mx.unam.fes.estatico.Elemento;
 import mx.unam.fes.exepciones.IndicieFueraExeption;
 
 public class Principal_Uno {
@@ -13,9 +12,7 @@ public class Principal_Uno {
 		System.out.println("===== ARREGLO =====");
 		testArreglo();
 
-		System.out.println("\n===== ELEMENTO =====");
-		testElemento();
-
+		
 		System.out.println("\n===== PILA =====");
 		testPila();
 
@@ -70,16 +67,7 @@ public class Principal_Uno {
 		System.out.println("Despues de limpiar, vacio -> " + arr.vacio());
 	}
 
-	private static void testElemento() {
-		Elemento<String> el = new Elemento<String>("manzana");
-		System.out.println("toString -> " + el.toString());
-		System.out.println("getValor -> " + el.getValor());
-		System.out.println("cantidad inicial -> " + el.cantidadElementos());
-		el.aumentarCantidad();
-		el.aumentarCantidad();
-		System.out.println("cantidad tras aumentar 2 -> " + el.cantidadElementos());
-	}
-
+	
 	private static void testPila() {
 		Pila<Integer> pila = new Pila<Integer>(3);
 		System.out.println("Agregar 10 -> " + pila.agregar(10));
