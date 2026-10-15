@@ -166,7 +166,7 @@ public class ListaDoblementeEnlazada<T> {
 	 */
 	public void imprimir() {
 		for (Nodo<T> temp = cabeza; temp != null; temp = temp.getSiguiente()) {
-			System.out.println(temp.getDato() + " ");
+			System.out.print(temp.getDato() + " ");
 		}
 	}
 
