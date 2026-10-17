@@ -1,4 +1,5 @@
 package mx.unam.fes.dinamico.ListaDoble;
+import java.util.Objects;
 
 public class ListaDoblementeEnlazada<T> {
 	private Nodo<T> cola;
@@ -120,6 +121,9 @@ public class ListaDoblementeEnlazada<T> {
 	 */
 	public T obtenerNodo(int indice) {
 		Nodo<T> temp = cabeza;
+		if (indice < 0) {
+		    return null;
+		}
 		for (int contador = 0; contador < indice && temp != null; contador++, temp = temp.getSiguiente())
 			;
 		if (temp != null) {
@@ -177,30 +181,34 @@ public class ListaDoblementeEnlazada<T> {
 	 * @param dato El elemento que deseo buscar y borrar de la lista.
 	 */
 	public void borrar(T dato) {
-		if (!esVacia()) {
-			if (cabeza == cola && dato.equals(cabeza.getDato())) {
-				cabeza = cola = null;
-				longitud--;
-			} else if (dato.equals(cabeza.getDato())) {
-				cabeza = cabeza.getSiguiente();
-				cabeza.setanterior(null);
-				longitud--;
-			} else {
-				Nodo<T> tmp;
-				for (tmp = cabeza.getSiguiente(); tmp != null
-						&& !tmp.getDato().equals(dato); tmp = tmp.getSiguiente())
-					;
-				if (tmp != null) {
-					tmp.getanterior().setSiguiente(tmp.getSiguiente());
-					if (tmp == cola) {
-						cola = tmp.getanterior();
-					} else {
-						tmp.getSiguiente().setanterior(tmp.getanterior());
-					}
-					longitud--;
-				}
-			}
-		}
+	    if (!esVacia()) {
+	        // 1. Caso de lista con un único elemento coincidente
+	        if (cabeza == cola && Objects.equals(dato, cabeza.getDato())) {
+	            cabeza = cola = null;
+	            longitud--;
+	        // 2. Caso de coincidencia en la cabeza
+	        } else if (Objects.equals(dato, cabeza.getDato())) {
+	            cabeza = cabeza.getSiguiente();
+	            cabeza.setanterior(null);
+	            longitud--;
+	        // 3. Recorrido secuencial para nodos intermedios o cola
+	        } else {
+	            Nodo<T> tmp;
+	            for (tmp = cabeza.getSiguiente(); 
+	                 tmp != null && !Objects.equals(tmp.getDato(), dato); 
+	                 tmp = tmp.getSiguiente())
+	                ;
+	            if (tmp != null) {
+	                tmp.getanterior().setSiguiente(tmp.getSiguiente());
+	                if (tmp == cola) {
+	                    cola = tmp.getanterior();
+	                } else {
+	                    tmp.getSiguiente().setanterior(tmp.getanterior());
+	                }
+	                longitud--;
+	            }
+	        }
+	    }
 	}
 
 	/**

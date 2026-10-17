@@ -1,4 +1,5 @@
 package mx.unam.fes.dinamico.ListaSimple;
+import java.util.Objects;
 
 public class ListaEnlazada<T> {
 	private Nodo<T> cola;
@@ -109,6 +110,9 @@ public class ListaEnlazada<T> {
 	 */
 	public T obtenerNodo(int indice) {
 		Nodo<T> temp = cabeza;
+		if (indice < 0) {
+		    return null;
+		}
 		for (int contador = 0; contador < indice && temp != null; contador++, temp = temp.getSiguiente())
 			;
 		if (temp != null) {
@@ -155,27 +159,31 @@ public class ListaEnlazada<T> {
 	 * @param dato El valor que deseo buscar y remover de la lista.
 	 */
 	public void borrar(T dato) {
-		if (!esVacia()) {
-			if (cabeza == cola && dato.equals(cabeza.getDato())) {
-				cabeza = cola = null;
-				longitud--;
-			} else if (dato.equals(cabeza.getDato())) {
-				cabeza = cabeza.getSiguiente();
-				longitud--;
-			} else {
-				Nodo<T> predesor, tmp;
-				for (predesor = cabeza, tmp = cabeza.getSiguiente(); tmp != null
-						&& !tmp.getDato().equals(dato); predesor = predesor.getSiguiente(), tmp = tmp.getSiguiente())
-					;
-				if (tmp != null) {
-					predesor.setSiguiente(tmp.getSiguiente());
-					if (tmp == cola) {
-						cola = predesor;
-					}
-					longitud--;
-				}
-			}
-		}
+	    if (!esVacia()) {
+	        // 1. Verificamos si la lista tiene un solo elemento y coincide
+	        if (cabeza == cola && Objects.equals(dato, cabeza.getDato())) {
+	            cabeza = cola = null;
+	            longitud--;
+	        // 2. Verificamos si el elemento a borrar está en la cabeza
+	        } else if (Objects.equals(dato, cabeza.getDato())) {
+	            cabeza = cabeza.getSiguiente();
+	            longitud--;
+	        // 3. Recorremos el resto de la lista buscando el elemento
+	        } else {
+	            Nodo<T> predesor, tmp;
+	            for (predesor = cabeza, tmp = cabeza.getSiguiente(); 
+	                 tmp != null && !Objects.equals(tmp.getDato(), dato); 
+	                 predesor = predesor.getSiguiente(), tmp = tmp.getSiguiente())
+	                ;
+	            if (tmp != null) {
+	                predesor.setSiguiente(tmp.getSiguiente());
+	                if (tmp == cola) {
+	                    cola = predesor;
+	                }
+	                longitud--;
+	            }
+	        }
+	    }
 	}
 
 	/**
@@ -184,29 +192,23 @@ public class ListaEnlazada<T> {
 	 * @param indice La posición del nodo que deseo eliminar.
 	 */
 	public void borrarEnIndice(int indice) {
-		if (!esVacia()) {
-			if (cabeza == cola && indice == 0) {
-				cabeza = cola = null;
-				longitud--;
-			} else if (indice == 0) {
-				cabeza = cabeza.getSiguiente();
-				longitud--;
-			} else {
-				Nodo<T> predesor, tmp;
-				int contador = 1;
-				for (predesor = cabeza, tmp = cabeza.getSiguiente(); contador < indice;
-						predesor = predesor.getSiguiente(), tmp = tmp.getSiguiente(), contador++)
-					;
-
-				if (tmp != null) {
-					predesor.setSiguiente(tmp.getSiguiente());
-					if (tmp == cola) {
-						cola = predesor;
-					}
-					longitud--;
-				}
-			}
-		}
+	    if (indice < 0 || indice >= longitud) {
+	        return;
+	    }
+	    if (indice == 0) {
+	        eliminarDeCabeza();
+	        return;
+	    }
+	    Nodo<T> predesor = cabeza;
+	    for (int contador = 0; contador < indice - 1; contador++) {
+	        predesor = predesor.getSiguiente();
+	    }
+	    Nodo<T> tmp = predesor.getSiguiente();
+	    predesor.setSiguiente(tmp.getSiguiente());
+	    if (tmp == cola) {
+	        cola = predesor;
+	    }
+	    longitud--;
 	}
 	/**
 	 * Reemplaza el dato contenido en el nodo de la posicion especificada.
