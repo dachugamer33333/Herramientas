@@ -151,6 +151,6 @@ public class Principal_Uno {
 		lista.imprimir();
 
 		System.out.println("imprimirTodo:");
-		lista.imprimirTodo();
+		lista.imprimir();
 	}
 }

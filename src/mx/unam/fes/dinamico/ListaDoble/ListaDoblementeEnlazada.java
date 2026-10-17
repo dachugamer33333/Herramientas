@@ -22,14 +22,7 @@ public class ListaDoblementeEnlazada<T> {
 		return cabeza == null;
 	}
 
-	/**
-	 * Imprimo el valor de cada nodo iterando por sus índices desde cero hasta la longitud actual.
-	 */
-	public void imprimirTodo() {
-		for (int i = 0; i < longitud; i++) {
-			System.out.println(obtenerNodo(i));
-		}
-	}
+	
 
 	/**
 	 * Inserto un nuevo nodo al inicio de la lista y actualizo las referencias dobles necesarias.
