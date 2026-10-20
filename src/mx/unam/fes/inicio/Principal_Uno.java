@@ -6,6 +6,7 @@ import mx.unam.fes.dinamico.ListaSimple.ListaEnlazada;
 import mx.unam.fes.dinamico.ListaDoble.ListaDoblementeEnlazada;
 import mx.unam.fes.estatico.Arreglo;
 import mx.unam.fes.exepciones.IndicieFueraExeption;
+import mx.unam.fes.nolineal.ArbolBinarioOrden;
 
 public class Principal_Uno {
 	public static void main(String[] args) throws IndicieFueraExeption {
@@ -24,6 +25,9 @@ public class Principal_Uno {
 
 		System.out.println("\n===== LISTA DOBLEMENTE ENLAZADA =====");
 		testListaDoblementeEnlazada();
+		
+		System.out.println("\\n===== ARBOLES BINARIOS =====");
+		testArbol();
 	}
 
 	private static void testArreglo() throws IndicieFueraExeption {
@@ -152,5 +156,30 @@ public class Principal_Uno {
 
 		System.out.println("imprimirTodo:");
 		lista.imprimir();
+	}
+	private static void testArbol()
+	{
+		 ArbolBinarioOrden<Integer> arbol = new ArbolBinarioOrden<>();
+
+	        arbol.insertar(45);
+	        arbol.insertar(3);
+	        arbol.insertar(200);
+	        arbol.insertar(20);
+	        arbol.insertar(100);
+	        arbol.insertar(50);
+	        arbol.insertar(15);
+	        arbol.insertar(30);
+
+	        try {
+	            // arbol.orden(arbol.getRaiz());
+	            arbol.noRecursivoOrden();
+
+	            arbol.eliminar(45);
+
+	            System.out.println("----");
+	            arbol.preorden(arbol.getRaiz());
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
 	}
 }
