@@ -55,4 +55,38 @@ public class Nodo<E> {
         Nodo other = (Nodo) obj;
         return Objects.equals(dato, other.dato);
     }
+
+	public E getDato() {
+		return dato;
+	}
+
+	public void setDato(E dato) {
+		this.dato = dato;
+	}
+
+	public Nodo<E> getIzquierdo() {
+		return izquierdo;
+	}
+
+	public void setIzquierdo(Nodo<E> izquierdo) {
+		this.izquierdo = izquierdo;
+	}
+
+	public Nodo<E> getDerecho() {
+		return derecho;
+	}
+
+	public void setDerecho(Nodo<E> derecho) {
+		this.derecho = derecho;
+	}
+
+	public String getEtiqueta() {
+		return etiqueta;
+	}
+
+	public void setEtiqueta(String etiqueta) {
+		this.etiqueta = etiqueta;
+	}
+    
+    
 }
