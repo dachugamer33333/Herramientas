@@ -6,7 +6,7 @@ import mx.unam.fes.dinamico.ListaSimple.ListaEnlazada;
 import mx.unam.fes.dinamico.ListaDoble.ListaDoblementeEnlazada;
 import mx.unam.fes.estatico.Arreglo;
 import mx.unam.fes.exepciones.IndicieFueraExeption;
-import mx.unam.fes.nolineal.ArbolBinarioOrden;
+import mx.unam.fes.nolineal.arboles.ArbolBinarioOrden;
 
 public class Principal_Uno {
 	public static void main(String[] args) throws IndicieFueraExeption {

@@ -1,4 +1,4 @@
-package mx.unam.fes.nolineal;
+package mx.unam.fes.nolineal.arboles;
 
 import mx.unam.fes.dinamico.Cola;
 import mx.unam.fes.dinamico.Pila;

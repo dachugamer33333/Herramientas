@@ -1,4 +1,4 @@
-package mx.unam.fes.grafos;
+package mx.unam.fes.nolineal.grafos;
 
 import mx.unam.fes.dinamico.ListaSimple.ListaEnlazada;
 import java.util.HashMap;

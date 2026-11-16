@@ -1,4 +1,4 @@
-package mx.unam.fes.nolineal;
+package mx.unam.fes.nolineal.arboles;
 import java.util.Objects;
 
 public class Nodo<E> {

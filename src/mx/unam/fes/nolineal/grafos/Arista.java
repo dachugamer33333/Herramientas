@@ -1,4 +1,4 @@
-package mx.unam.fes.grafos;
+package mx.unam.fes.nolineal.grafos;
 
 public class Arista<T> {
     private T destino;
